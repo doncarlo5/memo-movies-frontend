@@ -2,18 +2,16 @@ import React, { useState, useEffect } from "react";
 import "./AllMoviesPages.css";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import MovieDetailsPage from "../MovieDetailsPage/MovieDetailsPage";
 
 function AllMoviesPages() {
   const [movies, setMovies] = useState(null);
 
   async function fetchAllMovies() {
-    const API_URL =
-      "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc";
+    const API_URL = import.meta.env.VITE_ALLMOVIES_API_URL;
+    const API_KEY = import.meta.env.VITE_KEY_API_URL;
 
     const headers = {
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhZmIxOGJlOGU1NmZmNzY4ODhmMmYxYTQzZmQzNTMzZSIsInN1YiI6IjY1YTkwMDJiOGVkYTg3MDEzNzg1Y2VlMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.LFpOMKieR0fTsF6nPZ-5VN5udaD8uEsxl49RPbYcH4o",
+      Authorization: `Bearer ${API_KEY}`,
       accept: "application/json",
     };
 

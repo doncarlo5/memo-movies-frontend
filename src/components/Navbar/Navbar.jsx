@@ -2,7 +2,7 @@ import React from "react";
 import "./Navbar.css";
 
 function Navbar() {
-  return <div>Navbar</div>;
+  return <nav></nav>;
 }
 
 export default Navbar;
