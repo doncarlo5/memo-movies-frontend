@@ -1,17 +1,19 @@
 import { Routes, Route } from "react-router-dom";
+import AllMoviesPage from "./pages/all-movies-page/all-movie-page.jsx";
+import MovieDetailsPage from "./pages/movie-details-page/movie-details-page.jsx";
 import Navbar from "./components/Navbar/Navbar.jsx";
-import AllMoviesPage from "./pages/AllMoviesPages/AllMoviesPages.jsx";
-import MovieDetailsPage from "./pages/MovieDetailsPage/MovieDetailsPage.jsx";
 import "./App.css";
 
 function App() {
   return (
-    <div className="App">
+    <div className="text-foreground">
       <Navbar />
-      <Routes>
-        <Route path="/" element={<AllMoviesPage />} />
-        <Route path="/movie/:movieId" element={<MovieDetailsPage />} />
-      </Routes>
+      <div className=" pb-6">
+        <Routes>
+          <Route path="/" element={<AllMoviesPage />} />
+          <Route path="/movie/:movieId" element={<MovieDetailsPage />} />
+        </Routes>
+      </div>
     </div>
   );
 }

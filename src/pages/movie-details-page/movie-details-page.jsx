@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
-import "./MovieDetailsPage.css";
+import Button from "../../components/button/button";
 
 function MovieDetailsPage() {
   const [movie, setMovie] = useState(null);
@@ -43,14 +43,25 @@ function MovieDetailsPage() {
           <p>{movie.tagline}</p>
           <p>Date: {movie.release_date}</p>
           <p>Description: {movie.overwiew}</p>
+          <p>
+            <div className=" flex flex-wrap gap-2">
+              Genre :{" "}
+              {movie.genres.map((genre) => (
+                <span className=" rounded-full bg-[#CCCCCC]" key={genre.id}>
+                  {genre.name}
+                </span>
+              ))}
+            </div>
+          </p>
 
-          <button
+          <Button
+            className=" ml-5"
             onClick={() => {
               navigate(-1);
             }}
           >
             Back
-          </button>
+          </Button>
         </>
       )}
     </div>
