@@ -5,6 +5,7 @@ import Button from "../../components/button/button";
 
 function MovieDetailsPage() {
   const [movie, setMovie] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   const { movieId } = useParams();
 
@@ -22,6 +23,7 @@ function MovieDetailsPage() {
     try {
       const response = await axios.get(ONEMOVIE_API_URL + movieId, { headers });
       setMovie(response.data);
+      setIsLoading(false);
       console.log(response.data);
     } catch (error) {
       console.error(error);
@@ -36,7 +38,9 @@ function MovieDetailsPage() {
 
   return (
     <div>
-      {movie && (
+      {isLoading ? (
+        "Loading..."
+      ) : (
         <>
           <img src={`${imageBaseUrl}${movie.poster_path}`} alt={movie.title} />
           <h3>{movie.title}</h3>
