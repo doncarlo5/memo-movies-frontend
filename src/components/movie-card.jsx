@@ -13,13 +13,17 @@ function getFlagUrl(lang) {
 function getGenreById(id) {
   for (const genre of genres) {
     if (genre.id === id) {
-      return genre.name;
+      const string = genre.name;
+
+      return string.charAt(0).toUpperCase() + string.slice(1);
     }
   }
   return null;
 }
 
 function MovieCard({ movie }) {
+  console.log(movie.genre_ids);
+
   return (
     <Link
       className="border-2 border-dark-grey p-4 shadow-[5px_5px_0px_0px_rgba(0,0,0,1)] hover:shadow-[0px_0px_0px_0px_rgba(0,0,0,1)] hover:bg-[#FFFFFF] bg-white-grey transition-shadow "
@@ -47,7 +51,9 @@ function MovieCard({ movie }) {
         </div>{" "}
         <div className=" text-sm flex flex-wrap gap-2">
           {movie.genre_ids.map((genreId) => (
-            <Pill key={genreId}>{getGenreById(genreId)}</Pill>
+            <Pill key={genreId} id={genreId}>
+              {getGenreById(genreId)}
+            </Pill>
           ))}
         </div>
       </div>

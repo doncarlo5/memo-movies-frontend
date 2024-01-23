@@ -8,7 +8,9 @@
   --parchment: #f4e9cdff;
   --floral-white: #fbf8ee; */
 }
-
+html {
+  scroll-behavior: smooth;
+}
 #root {
   /* background-color: var(--rich-black); */
   /* color: var(--floral-white); */

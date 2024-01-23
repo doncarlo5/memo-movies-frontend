@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Search from "./search";
+import DropdownMenu from "./dropdown-menu";
 
 function Navbar() {
   return (
@@ -12,6 +14,8 @@ function Navbar() {
             alt="MemoMovies Logo"
           />
         </Link>
+        <DropdownMenu></DropdownMenu>
+        <Search></Search>
         <h1>Memo Movies</h1>
       </div>
     </nav>

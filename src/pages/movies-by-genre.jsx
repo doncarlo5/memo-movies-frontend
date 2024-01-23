@@ -1,14 +1,19 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useParams } from "react-router-dom";
+import { genres as genreList } from "../constants/genres";
 import MovieCard from "../components/movie-card";
-import { Link } from "react-router-dom";
 import Button from "../components/button";
 import Loading from "../components/loading";
 
-function AllMoviesPage() {
+function moviesByGenre() {
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
+
+  const { genre } = useParams();
+  const selectedGenre = genreList.find((el) => el.name === genre);
+  console.log(selectedGenre);
 
   function handleNextPage() {
     scrollTo(0, 0, { behavior: "smooth" });
@@ -24,7 +29,7 @@ function AllMoviesPage() {
     }, 100);
   }
 
-  async function fetchAllMovies() {
+  async function fetchMoviesByGenre() {
     const API_URL = import.meta.env.VITE_ALLMOVIES_API_URL;
     const API_KEY = import.meta.env.VITE_KEY_API_URL;
 
@@ -34,9 +39,12 @@ function AllMoviesPage() {
     };
 
     try {
-      const response = await axios.get(`${API_URL}&page=${currentPage}`, {
-        headers,
-      });
+      const response = await axios.get(
+        `${API_URL}&page=${currentPage}&with_genres=${selectedGenre.id}`,
+        {
+          headers,
+        }
+      );
       setMovies(response.data.results);
       setIsLoading(false);
       console.log(response.data.results);
@@ -46,8 +54,8 @@ function AllMoviesPage() {
   }
 
   useEffect(() => {
-    fetchAllMovies(currentPage);
-  }, [currentPage]);
+    fetchMoviesByGenre(currentPage);
+  }, [currentPage, genre]);
 
   return (
     <div>
@@ -78,4 +86,4 @@ function AllMoviesPage() {
   );
 }
 
-export default AllMoviesPage;
+export default moviesByGenre;

@@ -4,6 +4,7 @@ import axios from "axios";
 import Button from "../components/button";
 import { languageCountryMap } from "../constants/langue-code";
 import Pill from "../components/pill";
+import Loading from "../components/loading";
 
 const API_COMMENTS = "https://memo-movies-backend.vercel.app/comments?movieId=";
 
@@ -89,14 +90,10 @@ function MovieDetailsPage() {
     }
   }
 
-  if (!comments) {
-    return <p>Loading...</p>;
-  }
-
   return (
     <div className="">
       {isLoading ? (
-        "Loading..."
+        <Loading></Loading>
       ) : (
         <div>
           <div className=" flex p-5 items-center justify-center gap-10">
@@ -144,7 +141,9 @@ function MovieDetailsPage() {
               </div>
               <div className=" flex flex-wrap gap-2 mb-6">
                 {movie.genres.map((genre) => (
-                  <Pill key={genre.id}>{genre.name}</Pill>
+                  <Pill id={genre.id} key={genre.id}>
+                    {genre.name}
+                  </Pill>
                 ))}
               </div>
               <hr className=" flex w-10 text-grey-pill" />
