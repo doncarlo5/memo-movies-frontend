@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import MovieCard from "../../components/movie-card/movie-card";
+import MovieCard from "../components/movie-card";
 import { Link } from "react-router-dom";
+import Button from "../components/button";
 
 function AllMoviesPage() {
   const [movies, setMovies] = useState([]);
@@ -27,15 +28,21 @@ function AllMoviesPage() {
   }
 
   useEffect(() => {
-    ``;
     fetchAllMovies();
   }, []);
 
   return (
-    <div className="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-6 gap-4">
-      {isLoading
-        ? "Loading..."
-        : movies.map((movie, i) => <MovieCard movie={movie} key={i} />)}
+    <div>
+      <div className="p-4 grid grid-cols-2 md:grid-cols-4 xl:grid-cols-6 gap-4">
+        {isLoading
+          ? "Loading..."
+          : movies.map((movie) => <MovieCard movie={movie} key={movie.id} />)}
+      </div>
+      <div className="flex justify-center">
+        <Link>
+          <Button className="flex justify-center">Next</Button>
+        </Link>
+      </div>
     </div>
   );
 }

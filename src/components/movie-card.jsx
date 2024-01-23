@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { languageCountryMap } from "../../constants/langue-code";
-import { genres } from "../../constants/genres";
+import { languageCountryMap } from "../constants/langue-code";
+import { genres } from "../constants/genres";
+import Pill from "./pill";
 
 const imageBaseUrl = "https://image.tmdb.org/t/p/w500";
 
@@ -20,17 +21,20 @@ function getGenreById(id) {
 
 function MovieCard({ movie }) {
   return (
-    <div className=" p-2 bg-parchment rounded-md hover:shadow-md transition-shadow">
-      <Link to={`/movie/${movie.id}`}>
+    <Link
+      className="border-2 border-dark-grey p-4 shadow-[5px_5px_0px_0px_rgba(0,0,0,1)] hover:shadow-[0px_0px_0px_0px_rgba(0,0,0,1)] hover:bg-[#FFFFFF] bg-white-grey transition-shadow "
+      to={`/movie/${movie.id}`}
+    >
+      <div>
         <div>
           <div className=" relative">
             <img
               style={{ borderImage: "fill 0 linear-gradient(#0003,#000);" }}
-              className=""
+              className="rounded-md"
               src={`${imageBaseUrl}${movie.poster_path}`}
               alt={"poster of" + movie.title}
             />
-            <div className="bottom-4 right-4 absolute px-1.5 py-1 rounded-sm backdrop-blur-md bg-[#000000]/50">
+            <div className="bottom-1 right-1 absolute px-1.5 py-1 rounded-sm">
               <img
                 className="w-5 rounded-sm"
                 src={getFlagUrl(movie.original_language)}
@@ -38,17 +42,16 @@ function MovieCard({ movie }) {
               />
             </div>
           </div>
-          <h5>{movie.title}</h5>
-          <h6>
-            Langue :<em></em>
-          </h6>
-          <p>
-            {movie.genre_ids.map((genreId) => getGenreById(genreId)).join(", ")}
-          </p>
-          <p>Description: {movie.overview}</p>
+          <h5 className=" text-lg font-semibold mt-2 mb-1">{movie.title}</h5>
+          <p></p>
+        </div>{" "}
+        <div className=" text-sm flex flex-wrap gap-2">
+          {movie.genre_ids.map((genreId) => (
+            <Pill key={genreId}>{getGenreById(genreId)}</Pill>
+          ))}
         </div>
-      </Link>
-    </div>
+      </div>
+    </Link>
   );
 }
 
