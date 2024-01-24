@@ -14,8 +14,8 @@ function Navbar() {
             alt="MemoMovies Logo"
           />
         </Link>
-        <DropdownMenu></DropdownMenu>
-        <Search></Search>
+        <DropdownMenu />
+        <Search />
         <h1>Memo Movies</h1>
       </div>
     </nav>

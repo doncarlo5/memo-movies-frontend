@@ -114,7 +114,9 @@ function MovieDetailsPage() {
               </div>
               <div className=" flex">
                 <p className=" mb-3 mr-1">Vote average :</p>
-                <p className=" font-light mr-1">{movie.vote_average}</p>
+                <p className=" font-light mr-1">
+                  {movie.vote_average.toFixed(1)}
+                </p>
                 <p className=" font-light"> / 10</p>
               </div>
               <div className=" flex">
@@ -130,12 +132,13 @@ function MovieDetailsPage() {
                 <p className=" font-light mr-1">{movie.revenue}</p>
                 <p className=" font-light"> $</p>
               </div> */}
-              <div className=" mb-6 flex flex-wrap gap-2">
+              <div className=" mb-6 flex flex-wrap gap-2 max-w-xl">
                 {" "}
                 <p>Product Companies :</p>
-                {movie.production_companies.map((productCompanies) => (
+                {movie.production_companies.map((productCompanies, index) => (
                   <span className=" font-light" key={productCompanies.id}>
                     {productCompanies.name}
+                    {index < movie.production_companies.length - 1 ? ", " : ""}
                   </span>
                 ))}
               </div>

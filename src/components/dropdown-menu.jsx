@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { genres } from "../constants/genres";
 
 const DropdownMenu = () => {
   const [isDropdownVisible, setDropdownVisibility] = useState(false);
@@ -8,19 +9,18 @@ const DropdownMenu = () => {
   };
 
   return (
-    <div className="relative inline-block text-left">
+    <div className="relative inline-block">
       <button
-        id="dropdownDefaultButton"
         onClick={toggleDropdown}
-        type="button"
-        className="font-medium border-4 border-dark-grey px-6 py-2 shadow-[5px_5px_0px_0px_rgba(0,0,0,1)] hover:shadow-[0px_0px_0px_0px_rgba(0,0,0,1)] transition-shadow hover:bg-dark-grey hover:text-[#FFFFFF] text-sm text-center inline-flex items-center"
+        className="outline-none focus:outline-none border px-6 py-2 shadow-[5px_5px_0px_0px_rgba(0,0,0,1)] hover:shadow-[0px_0px_0px_0px_rgba(0,0,0,1)] transition-shadow hover:bg-dark-grey hover:text-[#FFFFFF] font-medium rounded-lg text-sm text-center inline-flex items-center"
       >
-        Dropdown button
+        Genre
         <svg
-          className="w-2.5 h-2.5 ms-3"
+          className={`w-2.5 h-2.5 ms-3 transform ${
+            isDropdownVisible ? "-rotate-180" : ""
+          } transition duration-150 ease-in-out`}
           aria-hidden="true"
           xmlns="http://www.w3.org/2000/svg"
-          fill="none"
           viewBox="0 0 10 6"
         >
           <path
@@ -32,49 +32,20 @@ const DropdownMenu = () => {
           />
         </svg>
       </button>
-
-      {/* Dropdown menu */}
-      {isDropdownVisible && (
-        <div
-          id="dropdown"
-          className="z-10 absolute bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 mt-2" // Added margin-top
-        >
-          <ul className="py-2 text-sm text-gray-700 dark:text-gray-200">
-            <li>
-              <a
-                href="#"
-                className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-              >
-                Dashboard
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-              >
-                Settings
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-              >
-                Earnings
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-              >
-                Sign out
-              </a>
-            </li>
-          </ul>
-        </div>
-      )}
+      <ul
+        className={`bg-white border rounded-sm transform scale-0 ${
+          isDropdownVisible ? "scale-100" : ""
+        } z-10 absolute transition duration-150 ease-in-out origin-top min-w-32`}
+      >
+        {genres.map((genre) => (
+          <li
+            key={genre.id}
+            className="rounded-sm px-6 py-2 hover:bg-dark-grey hover:text-[#FFFFFF] transition duration-150 ease-in-out"
+          >
+            {genre.name.charAt(0).toUpperCase() + genre.name.slice(1)}
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };
