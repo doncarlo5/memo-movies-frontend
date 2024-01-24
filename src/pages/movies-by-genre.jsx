@@ -13,7 +13,6 @@ function moviesByGenre() {
 
   const { genre } = useParams();
   const selectedGenre = genreList.find((el) => el.name === genre);
-  console.log(selectedGenre);
 
   function handleNextPage() {
     scrollTo(0, 0, { behavior: "smooth" });
@@ -47,7 +46,6 @@ function moviesByGenre() {
       );
       setMovies(response.data.results);
       setIsLoading(false);
-      console.log(response.data.results);
     } catch (error) {
       console.error(error);
     }

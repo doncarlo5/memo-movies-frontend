@@ -4,7 +4,6 @@ import { genres } from "../constants/genres";
 
 function Pill({ children, id }) {
   const movieGenre = genres.find((el) => el.id === id);
-  console.log(movieGenre);
 
   return (
     <Link to={`/${movieGenre.name}`}>

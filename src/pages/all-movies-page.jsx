@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import MovieCard from "../components/movie-card";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import Button from "../components/button";
 import Loading from "../components/loading";
 
@@ -9,7 +9,8 @@ function AllMoviesPage() {
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
-
+  const [params, setSearchParams] = useSearchParams();
+  const sortBy = params.get("sortBy");
   function handleNextPage() {
     scrollTo(0, 0, { behavior: "smooth" });
     setTimeout(() => {
@@ -27,19 +28,22 @@ function AllMoviesPage() {
   async function fetchAllMovies() {
     const API_URL = import.meta.env.VITE_ALLMOVIES_API_URL;
     const API_KEY = import.meta.env.VITE_KEY_API_URL;
-
+    let URL_PARAMS = `&page=${currentPage}`;
+    if (sortBy) {
+      URL_PARAMS += `&sort_by=${sortBy}`;
+    }
+    console.log(URL_PARAMS);
     const headers = {
       Authorization: `Bearer ${API_KEY}`,
       accept: "application/json",
     };
 
     try {
-      const response = await axios.get(`${API_URL}&page=${currentPage}`, {
+      const response = await axios.get(`${API_URL}${URL_PARAMS}`, {
         headers,
       });
       setMovies(response.data.results);
       setIsLoading(false);
-      console.log(response.data.results);
     } catch (error) {
       console.error(error);
     }
@@ -47,7 +51,7 @@ function AllMoviesPage() {
 
   useEffect(() => {
     fetchAllMovies(currentPage);
-  }, [currentPage]);
+  }, [currentPage, sortBy]);
 
   return (
     <div>

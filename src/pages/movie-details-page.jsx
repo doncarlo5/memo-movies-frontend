@@ -9,7 +9,11 @@ import Loading from "../components/loading";
 const API_COMMENTS = "https://memo-movies-backend.vercel.app/comments?movieId=";
 
 function getFlagUrl(lang) {
-  return `http://purecatamphetamine.github.io/country-flag-icons/3x2/${languageCountryMap[lang]}.svg`;
+  if (languageCountryMap[lang]) {
+    return `http://purecatamphetamine.github.io/country-flag-icons/3x2/${languageCountryMap[lang]}.svg`;
+  } else {
+    return;
+  }
 }
 
 function MovieDetailsPage() {
@@ -37,7 +41,6 @@ function MovieDetailsPage() {
       setComments(responseComment.data);
       setMovie(response.data);
       setIsLoading(false);
-      // console.log(response.data);
     } catch (error) {
       console.error(error);
     }
@@ -70,7 +73,6 @@ function MovieDetailsPage() {
         "https://memo-movies-backend.vercel.app/comments",
         newComment
       );
-      console.log(responsePost);
       fetchOneMovie();
     } catch (error) {
       console.error(error);
@@ -127,11 +129,6 @@ function MovieDetailsPage() {
               <p className=" font-light max-w-lg mb-6 text-sm">
                 {movie.overview}
               </p>
-              {/* <div className=" flex">
-                <p className=" mb-3 mr-1">Revenue :</p>
-                <p className=" font-light mr-1">{movie.revenue}</p>
-                <p className=" font-light"> $</p>
-              </div> */}
               <div className=" mb-6 flex flex-wrap gap-2 max-w-xl">
                 {" "}
                 <p>Product Companies :</p>
@@ -154,13 +151,26 @@ function MovieDetailsPage() {
                 <p className=" italic font-bold mt-2 mb-2">My comments :</p>
                 {comments.map((comment) => {
                   return (
-                    <div key={comment.id} className=" flex ml-3">
+                    <div key={comment.id} className="group flex ml-3">
                       <p>{comment.body}</p>
                       <button
                         onClick={() => handleDelete(comment.id)}
-                        className="ml-2 bg-white-grey opacity-0 hover:opacity-100"
+                        className="ml-3 transition delay-500 ease-in-out opacity-0 group-hover:opacity-100 hover:text-red-800 hover:scale-100 scale-90"
                       >
-                        x
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          strokeWidth={1.5}
+                          stroke="currentColor"
+                          className="w-6 h-6"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M15 12H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                          />
+                        </svg>
                       </button>
                     </div>
                   );

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { genres } from "../constants/genres";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 const DropdownMenu = () => {
   const [isDropdownVisible, setDropdownVisibility] = useState(false);
@@ -7,6 +8,8 @@ const DropdownMenu = () => {
   const toggleDropdown = () => {
     setDropdownVisibility(!isDropdownVisible);
   };
+
+  const navigate = useNavigate();
 
   return (
     <div className="relative inline-block">
@@ -35,15 +38,14 @@ const DropdownMenu = () => {
       <ul
         className={`bg-white border rounded-sm transform scale-0 ${
           isDropdownVisible ? "scale-100" : ""
-        } z-10 absolute transition duration-150 ease-in-out origin-top min-w-32`}
+        } z-10 absolute transition duration-150 ease-in-out origin-top min-w-32 overflow-y-scroll max-h-96`}
       >
         {genres.map((genre) => (
-          <li
-            key={genre.id}
-            className="rounded-sm px-6 py-2 hover:bg-dark-grey hover:text-[#FFFFFF] transition duration-150 ease-in-out"
-          >
-            {genre.name.charAt(0).toUpperCase() + genre.name.slice(1)}
-          </li>
+          <Link key={genre.id} to={genre.name}>
+            <li className="rounded-sm px-6 py-2 hover:bg-dark-grey hover:text-[#FFFFFF] transition duration-150 ease-in-out">
+              {genre.name.charAt(0).toUpperCase() + genre.name.slice(1)}
+            </li>
+          </Link>
         ))}
       </ul>
     </div>

@@ -1,8 +1,13 @@
 import React from "react";
 
-function handleKeyDown(e) {}
+function Search({ fetchSearchMovies }) {
+  function handleKeyDown(e) {
+    const query = e.target.value;
+    if (e.key === "Enter") {
+      fetchSearchMovies(query);
+    }
+  }
 
-function Search() {
   return (
     <div className="bg-gray-200">
       <div className="">
