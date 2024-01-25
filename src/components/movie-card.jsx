@@ -23,7 +23,7 @@ function getGenreById(id) {
 
 function MovieCard({ movie }) {
   return (
-    <div className="border-2 border-dark-grey p-4 shadow-[5px_5px_0px_0px_rgba(0,0,0,1)] hover:shadow-[0px_0px_0px_0px_rgba(0,0,0,1)] hover:bg-[#FFFFFF] bg-white-grey transition-shadow ">
+    <div className=" dark:border-white   border-2 border-dark-grey p-4 shadow-[5px_5px_0px_0px_#212121] dark:shadow-[5px_5px_0px_0px_#d6d3d1] hover:shadow-[0px_0px_0px_0px_#212121] dark:hover:shadow-[0px_0px_0px_0px_#07101C] hover:bg-[#FFFFFF] dark:hover:bg-[#0F1420] dark:text-white bg-white-grey dark:bg-dark-color-mode transition-shadow ">
       <div>
         <Link to={`/movie/${movie.id}`}>
           <div>

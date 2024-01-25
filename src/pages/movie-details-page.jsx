@@ -98,7 +98,7 @@ function MovieDetailsPage() {
         <Loading></Loading>
       ) : (
         <div>
-          <div className=" flex p-5 items-center justify-center gap-10">
+          <div className=" flex p-5 items-center justify-center gap-10 dark:bg-dark-color-mode dark:text-white">
             <img
               className=" rounded-md h-auto max-w-full "
               src={`${imageBaseUrl}${movie.poster_path}`}
@@ -185,12 +185,12 @@ function MovieDetailsPage() {
                       value={userComment}
                       onChange={(e) => setUserComment(e.target.value)}
                       onKeyDown={handleKeyDown}
-                      className="block w-full rounded  px-3 py-2  outline"
+                      className="block w-full rounded  px-3 py-2  outline dark:text-dark-grey"
                       rows="3"
                     ></textarea>
                   </div>
                   <button
-                    className=" font-light border-2 border-dark-grey px-2 ml-1 mt-2  rounded-md shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[0px_0px_0px_0px_rgba(0,0,0,1)] transition-shadow hover:bg-dark-grey hover:text-[#FFFFFF] "
+                    className="dark:border-white font-light border-2 border-dark-grey px-2 ml-1 mt-2  rounded-md shadow-[2px_2px_0px_0px_#212121] dark:shadow-[2px_2px_0px_0px_#D5D3D1]   dark:hover:shadow-[0px_0px_0px_0px_white] hover:shadow-[0px_0px_0px_0px_#212121] transition-shadow hover:bg-dark-grey hover:text-[#FFFFFF] dark:bg-[#0F1420] "
                     type="submit"
                   >
                     Add comment
@@ -199,7 +199,7 @@ function MovieDetailsPage() {
               </div>
             </div>
           </div>
-          <div className="flex justify-center p-4">
+          <div className="flex justify-center p-4 dark:bg-dark-color-mode">
             <Button
               className=" "
               onClick={() => {

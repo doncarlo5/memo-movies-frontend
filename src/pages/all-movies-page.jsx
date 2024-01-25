@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+// import axios from "axios";
+import { discoveryApi, searchApi } from "./../api/apiHandler";
 import MovieCard from "../components/movie-card";
 import { Link, useSearchParams } from "react-router-dom";
 import Button from "../components/button";
@@ -9,8 +10,11 @@ function AllMoviesPage() {
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
+
   const [params, setSearchParams] = useSearchParams();
   const sortBy = params.get("sortBy");
+  const searchBy = params.get("searchBy");
+
   function handleNextPage() {
     scrollTo(0, 0, { behavior: "smooth" });
     setTimeout(() => {
@@ -26,22 +30,24 @@ function AllMoviesPage() {
   }
 
   async function fetchAllMovies() {
-    const API_URL = import.meta.env.VITE_ALLMOVIES_API_URL;
-    const API_KEY = import.meta.env.VITE_KEY_API_URL;
-    let URL_PARAMS = `&page=${currentPage}`;
+    let apiToUse = discoveryApi;
+    let URL_PARAMS = "";
+
     if (sortBy) {
       URL_PARAMS += `&sort_by=${sortBy}`;
     }
-    console.log(URL_PARAMS);
-    const headers = {
-      Authorization: `Bearer ${API_KEY}`,
-      accept: "application/json",
-    };
+
+    if (searchBy) {
+      apiToUse = searchApi;
+      URL_PARAMS = `movie?query=${searchBy}`;
+    }
+
+    URL_PARAMS += `&page=${currentPage}`;
+
+    console.log("URL PARAMS: ", URL_PARAMS);
 
     try {
-      const response = await axios.get(`${API_URL}${URL_PARAMS}`, {
-        headers,
-      });
+      const response = await apiToUse.api.get(URL_PARAMS);
       setMovies(response.data.results);
       setIsLoading(false);
     } catch (error) {
@@ -51,11 +57,11 @@ function AllMoviesPage() {
 
   useEffect(() => {
     fetchAllMovies(currentPage);
-  }, [currentPage, sortBy]);
+  }, [currentPage, sortBy, searchBy]);
 
   return (
-    <div>
-      <div className="p-4 grid grid-cols-2 md:grid-cols-4 xl:grid-cols-6 gap-4">
+    <div className=" dark:bg-dark-color-mode">
+      <div className="p-4 grid grid-cols-2 md:grid-cols-4 xl:grid-cols-6 gap-4 dark:bg-dark-color-mode">
         {isLoading ? (
           <Loading />
         ) : (
