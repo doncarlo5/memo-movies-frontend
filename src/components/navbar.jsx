@@ -30,14 +30,14 @@ function Navbar() {
     <nav className=" bg-parchment dark:bg-[#0F1420] dark:text-white max-w-full shadow">
       <div className=" max-w-* flex flex-wrap items-center justify-between mx-auto p-4">
         <Link to="/" onClick={() => setFilter("-1")}>
-          <div className=" hover:scale-110 transition-transform ml-4">
+          <div className=" ">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill={theme === "dark" ? "#FFF" : "#212121"}
               viewBox="0 0 24 24"
               strokeWidth="1.5"
               stroke={theme === "dark" ? "#FFF" : "#212121"}
-              className="w-10 h-10"
+              className="w-10 h-10 hover:scale-110 transition-transform mx-4"
             >
               <path
                 strokeLinecap="round"
