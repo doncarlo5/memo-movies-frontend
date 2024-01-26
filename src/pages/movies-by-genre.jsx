@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { genres as genreList } from "../constants/genres";
 import MovieCard from "../components/movie-card";
 import Button from "../components/button";
@@ -11,6 +11,8 @@ function moviesByGenre() {
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
+
+  const navigate = useNavigate();
 
   const { genre } = useParams();
   const selectedGenre = genreList.find((el) => el.name === genre);
@@ -38,6 +40,7 @@ function moviesByGenre() {
       setIsLoading(false);
     } catch (error) {
       console.error(error);
+      navigate(`*`);
     }
   }
 
