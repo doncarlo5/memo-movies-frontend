@@ -1,9 +1,10 @@
 import { Routes, Route } from "react-router-dom";
 import AllMoviesPage from "./pages/all-movies-page.jsx";
 import MovieDetailsPage from "./pages/movie-details-page.jsx";
-import MoviesByGenre from "./pages/movies-by-genre.jsx";
 import Navbar from "./components/navbar.jsx";
 import SortedMovies from "./pages/sorted-movies.jsx";
+import MoviesByGenre from "./pages/movies-by-genre.jsx";
+
 import "./App.css";
 
 function App() {

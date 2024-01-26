@@ -35,6 +35,7 @@ function AllMoviesPage() {
 
     if (sortBy) {
       URL_PARAMS += `&sort_by=${sortBy}`;
+      console.log("SORT", sortBy);
     }
 
     if (searchBy) {
@@ -43,8 +44,6 @@ function AllMoviesPage() {
     }
 
     URL_PARAMS += `&page=${currentPage}`;
-
-    console.log("URL PARAMS: ", URL_PARAMS);
 
     try {
       const response = await apiToUse.api.get(URL_PARAMS);

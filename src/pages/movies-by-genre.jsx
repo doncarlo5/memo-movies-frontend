@@ -5,6 +5,7 @@ import { genres as genreList } from "../constants/genres";
 import MovieCard from "../components/movie-card";
 import Button from "../components/button";
 import Loading from "../components/loading";
+import { discoveryApi, searchApi } from "./../api/apiHandler";
 
 function moviesByGenre() {
   const [movies, setMovies] = useState([]);
@@ -29,20 +30,9 @@ function moviesByGenre() {
   }
 
   async function fetchMoviesByGenre() {
-    const API_URL = import.meta.env.VITE_ALLMOVIES_API_URL;
-    const API_KEY = import.meta.env.VITE_KEY_API_URL;
-
-    const headers = {
-      Authorization: `Bearer ${API_KEY}`,
-      accept: "application/json",
-    };
-
     try {
-      const response = await axios.get(
-        `${API_URL}&page=${currentPage}&with_genres=${selectedGenre.id}`,
-        {
-          headers,
-        }
+      const response = await discoveryApi.api.get(
+        `&page=${currentPage}&with_genres=${selectedGenre.id}`
       );
       setMovies(response.data.results);
       setIsLoading(false);
