@@ -4,8 +4,10 @@ import MovieDetailsPage from "./pages/movie-details-page.jsx";
 import Navbar from "./components/navbar.jsx";
 import SortedMovies from "./pages/sorted-movies.jsx";
 import MoviesByGenre from "./pages/movies-by-genre.jsx";
+import ErrorPage from "./pages/error-page.jsx";
 
 import "./App.css";
+import Footer from "./components/footer.jsx";
 
 function App() {
   return (
@@ -17,8 +19,10 @@ function App() {
           <Route path="/:genre" element={<MoviesByGenre />} />
           <Route path="/movie/:movieId" element={<MovieDetailsPage />} />
           <Route path="/sortedby/" element={<SortedMovies />} />
+          <Route path="*" element={<ErrorPage />} />
         </Routes>
       </div>
+      <Footer />
     </div>
   );
 }
