@@ -60,8 +60,6 @@ function MovieDetailsPage() {
     const newComment = {
       body: userComment,
       movieId,
-      isCommented,
-      isFavorite,
     };
     try {
       const responsePost = await axios.post(

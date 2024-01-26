@@ -7,7 +7,11 @@ import Pill from "./pill";
 const imageBaseUrl = "https://image.tmdb.org/t/p/w500";
 
 function getFlagUrl(lang) {
-  return `http://purecatamphetamine.github.io/country-flag-icons/3x2/${languageCountryMap[lang]}.svg`;
+  if (languageCountryMap[lang]) {
+    return `http://purecatamphetamine.github.io/country-flag-icons/3x2/${languageCountryMap[lang]}.svg`;
+  } else {
+    return;
+  }
 }
 
 function getGenreById(id) {
