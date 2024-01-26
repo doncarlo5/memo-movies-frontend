@@ -5,6 +5,7 @@ import Button from "../components/button";
 import { languageCountryMap } from "../constants/langue-code";
 import Pill from "../components/pill";
 import Loading from "../components/loading";
+import { oneMovieApi } from "../api/apiHandler";
 
 const API_COMMENTS = "https://memo-movies-backend.vercel.app/comments?movieId=";
 
@@ -27,16 +28,8 @@ function MovieDetailsPage() {
   const navigate = useNavigate();
 
   async function fetchOneMovie() {
-    const ONEMOVIE_API_URL = "https://api.themoviedb.org/3/movie/";
-
-    const headers = {
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhZmIxOGJlOGU1NmZmNzY4ODhmMmYxYTQzZmQzNTMzZSIsInN1YiI6IjY1YTkwMDJiOGVkYTg3MDEzNzg1Y2VlMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.LFpOMKieR0fTsF6nPZ-5VN5udaD8uEsxl49RPbYcH4o",
-      accept: "application/json",
-    };
-
     try {
-      const response = await axios.get(ONEMOVIE_API_URL + movieId, { headers });
+      const response = await oneMovieApi.api.get(movieId);
       const responseComment = await axios.get(`${API_COMMENTS}${movieId}`);
       setComments(responseComment.data);
       setMovie(response.data);
@@ -67,6 +60,8 @@ function MovieDetailsPage() {
     const newComment = {
       body: userComment,
       movieId,
+      isCommented,
+      isFavorite,
     };
     try {
       const responsePost = await axios.post(

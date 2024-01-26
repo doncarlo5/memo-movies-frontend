@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-// import axios from "axios";
 import { discoveryApi, searchApi } from "./../api/apiHandler";
 import MovieCard from "../components/movie-card";
 import { Link, useSearchParams } from "react-router-dom";

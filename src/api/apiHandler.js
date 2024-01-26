@@ -17,3 +17,4 @@ class API {
 
 export const searchApi = new API(import.meta.env.VITE_SEARCH_API_URL);
 export const discoveryApi = new API(import.meta.env.VITE_DISCOVERY_API_URL);
+export const oneMovieApi = new API(import.meta.env.VITE_ONEMOVIE_API_URL);
