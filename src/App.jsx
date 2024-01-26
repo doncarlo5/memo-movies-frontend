@@ -2,7 +2,6 @@ import { Routes, Route } from "react-router-dom";
 import AllMoviesPage from "./pages/all-movies-page.jsx";
 import MovieDetailsPage from "./pages/movie-details-page.jsx";
 import Navbar from "./components/navbar.jsx";
-import SortedMovies from "./pages/sorted-movies.jsx";
 import MoviesByGenre from "./pages/movies-by-genre.jsx";
 import ErrorPage from "./pages/error-page.jsx";
 

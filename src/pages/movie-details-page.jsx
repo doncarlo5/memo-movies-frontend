@@ -85,6 +85,11 @@ function MovieDetailsPage() {
     }
   }
 
+  function formatDate(dateString) {
+    const options = { day: "numeric", month: "numeric", year: "numeric" };
+    return new Date(dateString).toLocaleDateString(undefined, options);
+  }
+
   return (
     <div className="">
       {isLoading ? (
@@ -116,7 +121,7 @@ function MovieDetailsPage() {
               </div>
               <div className=" flex">
                 <p className=" mb-3 mr-1">Release date :</p>
-                <p className=" font-light">{movie.release_date}</p>
+                <p className=" font-light">{formatDate(movie.release_date)}</p>
               </div>
               <p className="">Storyline :</p>{" "}
               <p className=" font-light max-w-lg mb-6 text-sm">
