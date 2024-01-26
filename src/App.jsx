@@ -17,7 +17,6 @@ function App() {
           <Route path="/" element={<AllMoviesPage />} />
           <Route path="/:genre" element={<MoviesByGenre />} />
           <Route path="/movie/:movieId" element={<MovieDetailsPage />} />
-          <Route path="/sortedby/" element={<SortedMovies />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
       </div>

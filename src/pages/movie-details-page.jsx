@@ -9,6 +9,23 @@ import { oneMovieApi } from "../api/apiHandler";
 
 const API_COMMENTS = "https://memo-movies-backend.vercel.app/comments?movieId=";
 
+const svgDeleteButton = (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    strokeWidth={1.5}
+    stroke="currentColor"
+    className="w-6 h-6"
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      d="M15 12H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+    />
+  </svg>
+);
+
 function getFlagUrl(lang) {
   if (languageCountryMap[lang]) {
     return `http://purecatamphetamine.github.io/country-flag-icons/3x2/${languageCountryMap[lang]}.svg`;
@@ -26,6 +43,7 @@ function MovieDetailsPage() {
   const [userComment, setUserComment] = useState("");
 
   const navigate = useNavigate();
+  const imageBaseUrl = "https://image.tmdb.org/t/p/w500";
 
   async function fetchOneMovie() {
     try {
@@ -50,8 +68,6 @@ function MovieDetailsPage() {
     }
   }
 
-  const imageBaseUrl = "https://image.tmdb.org/t/p/w500";
-
   async function handleSubmit(e) {
     e.preventDefault();
     if (!userComment) {
@@ -74,6 +90,11 @@ function MovieDetailsPage() {
     fetchOneMovie();
   }
 
+  function formatDate(dateString) {
+    const options = { day: "numeric", month: "numeric", year: "numeric" };
+    return new Date(dateString).toLocaleDateString(undefined, options);
+  }
+
   async function handleDelete(commentId) {
     try {
       const response = await axios.delete(
@@ -83,11 +104,6 @@ function MovieDetailsPage() {
     } catch (error) {
       console.error(error);
     }
-  }
-
-  function formatDate(dateString) {
-    const options = { day: "numeric", month: "numeric", year: "numeric" };
-    return new Date(dateString).toLocaleDateString(undefined, options);
   }
 
   return (
@@ -155,20 +171,7 @@ function MovieDetailsPage() {
                         onClick={() => handleDelete(comment.id)}
                         className="ml-3 transition delay-500 ease-in-out opacity-0 group-hover:opacity-100 hover:text-red-800 hover:scale-100 scale-90"
                       >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          strokeWidth={1.5}
-                          stroke="currentColor"
-                          className="w-6 h-6"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M15 12H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
-                          />
-                        </svg>
+                        {svgDeleteButton}
                       </button>
                     </div>
                   );
