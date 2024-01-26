@@ -2,8 +2,8 @@ import React from "react";
 
 function Footer() {
   return (
-    <div className=" mt-2 w-full bg-inherit text-inherit m-0 flex justify-center p-1 bg-[#EDEEF1]">
-      <p className=" text-md font-extralight mr-1">Link to the repo</p>
+    <div className="  w-full bg-inherit text-inherit m-0 flex justify-center p-1 bg-[#EDEEF1]">
+      <p className=" text-md font-extralight mr-1">Link to </p>
       <a href="https://github.com/doncarlo5/memoMovies-frontend">
         <svg
           viewBox="0 0 24 24"
