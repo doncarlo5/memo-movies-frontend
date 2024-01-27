@@ -1,8 +1,26 @@
-# React + Vite
+# memoMovies 🍿 - by Julien THOMAS
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<a href="https://memomovies-doncarlos.netlify.app/"><img src="./public/img-cover.png" width="60%" /></a>
 
-Currently, two official plugins are available:
+### [Looking for a movie ?](https://memomovies-doncarlos.netlify.app/) 🎬
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# ⚡️ Introduction
+
+React application to search, discover and comment movies.
+
+# 🔥 Features
+
+- 💬 **Add & Delete comments**
+- 🔦 **Discover by genre**
+- 🔍 **Search movies**
+
+# ⚙️ Behind the scene
+
+- ✨ **Tailwind project**
+- 🛜 **Manage external API**
+- 📂 **Handle mock server**
+
+# 🌐 Credits
+
+- External API : [TMDB](https://developer.themoviedb.org/reference/intro/getting-started)
+- Mock Server on Vercel : [GitHub Repo](https://github.com/kitloong/json-server-vercel)
