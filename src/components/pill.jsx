@@ -7,7 +7,7 @@ function Pill({ children, id }) {
 
   return (
     <Link to={`/${movieGenre.name}`}>
-      <div className="font-light rounded-full px-2 bg-grey-pill dark:text-white dark:bg-[#0F1420] cursor-pointer">
+      <div className=" rounded-full px-2 bg-grey-pill dark:text-white dark:bg-[#0F1420] cursor-pointer">
         #{children}
       </div>
     </Link>
