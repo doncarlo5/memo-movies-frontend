@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { genres } from "../constants/genres";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useMatch, useNavigate, useParams } from "react-router-dom";
 
 const DropdownMenu = () => {
   const [isDropdownVisible, setDropdownVisibility] = useState(false);
@@ -13,6 +13,10 @@ const DropdownMenu = () => {
     setDropdownVisibility(false);
   }
 
+  const match = useMatch("/:genre");
+  const { genre } = match.params;
+  const formattedGenre = genre.charAt(0).toUpperCase() + genre.slice(1);
+
   const navigate = useNavigate();
 
   return (
@@ -21,7 +25,7 @@ const DropdownMenu = () => {
         onClick={toggleDropdown}
         className="outline-none focus:outline-none border px-6 py-2 shadow-[5px_5px_0px_0px_#212121] dark:shadow-[5px_5px_0px_0px_#d6d3d1] dark:hover:shadow-[0px_0px_0px_0px_#FFFFFF] hover:shadow-[0px_0px_0px_0px_#212121]  transition-shadow hover:bg-[#0F1420] hover:text-[#FFFFFF] font-medium rounded-lg text-sm text-center inline-flex items-center"
       >
-        Genre
+        {formattedGenre ?? "Genre"}
         <svg
           className={`w-2.5 h-2.5 ms-3 transform ${
             isDropdownVisible ? "-rotate-180" : ""
