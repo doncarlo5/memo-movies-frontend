@@ -20,6 +20,8 @@ React application to search, discover and comment movies.
 🛜 **Manage external API** <br />
 📂 **Handle mock server** <br />
 
+---
+
 # 🌐 Credits
 
 - External API : [TMDB](https://developer.themoviedb.org/reference/intro/getting-started)
