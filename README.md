@@ -10,15 +10,15 @@ React application to search, discover and comment movies.
 
 # 🔥 Features
 
-💬 **Add & Delete comments**
-🔦 **Discover by genre**
-🔍 **Search movies**
+💬 **Add & Delete comments** <br />
+🔦 **Discover by genre** <br />
+🔍 **Search movies** <br />
 
 # ⚙️ Behind the scene
 
-✨ **Tailwind project**
-🛜 **Manage external API**
-📂 **Handle mock server**
+✨ **Tailwind project** <br />
+🛜 **Manage external API** <br />
+📂 **Handle mock server** <br />
 
 # 🌐 Credits
 
