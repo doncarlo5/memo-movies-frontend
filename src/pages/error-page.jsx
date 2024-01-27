@@ -18,7 +18,7 @@ function ErrorPage() {
         <div className={`mb-4 ${isBouncing ? "animate-shake" : ""}`}>
           <img
             className="rounded cursor-pointer shadow-blue-950 shadow-2xl"
-            src="../../public/matrix-gif.gif"
+            src="/matrix-gif.gif"
             alt="gif matrix"
             onClick={handleImageClick}
           />
