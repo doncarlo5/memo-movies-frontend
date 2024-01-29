@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { genres } from "../constants/genres";
-import { Link, useMatch, useNavigate, useParams } from "react-router-dom";
+import { Link, useMatch, useLocation, useNavigate } from "react-router-dom";
 
 const DropdownMenu = () => {
   const [isDropdownVisible, setDropdownVisibility] = useState(false);
@@ -14,8 +14,10 @@ const DropdownMenu = () => {
   }
 
   const match = useMatch("/:genre");
-  const { genre } = match.params;
-  const formattedGenre = genre.charAt(0).toUpperCase() + genre.slice(1);
+
+  const formattedGenre = match?.params?.genre
+    ? match.params.genre.charAt(0).toUpperCase() + match.params.genre.slice(1)
+    : null;
 
   const navigate = useNavigate();
 

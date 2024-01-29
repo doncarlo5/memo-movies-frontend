@@ -40,4 +40,9 @@ Moviecard : Afficher une image sans logo lorsque undefined. On error event image
 Skeleton loading : array from length lors de la pagination
 Lors du loading, mettre le footer en bas
 Gestion erreur : renvoi vers la 404 lors d'un film qui n'existe pas
+
+-- POUR LA PRESENTATION
+ne pas rentrer dans la technique
+Montrer en avant les différentiation comme :
+API handler, tmdb avec la api clé, tailwind (dark, code organization)
 -->
