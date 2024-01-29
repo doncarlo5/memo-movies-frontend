@@ -50,7 +50,7 @@ function Navbar() {
         <DropdownMenu />
 
         <select
-          className=" hover:text-white outline-none focus:outline-none border py-1 shadow-[3px_3px_0px_0px_#212121] dark:shadow-[3px_3px_0px_0px_#d6d3d1] hover:shadow-[0px_0px_0px_0px_#212121] dark:hover:shadow-[0px_0px_0px_0px_white] transition-shadow hover:bg-dark-grey dark:bg-[#0F1420] font-sm rounded-md text-sm text-center   "
+          className="px-1 py-[0.5159rem] font-medium hover:text-white outline-none focus:outline-none border shadow-[3px_3px_0px_0px_#212121] dark:shadow-[3px_3px_0px_0px_#d6d3d1] hover:shadow-[0px_0px_0px_0px_#212121] dark:hover:shadow-[0px_0px_0px_0px_white] transition-shadow hover:bg-dark-grey dark:bg-[#0F1420] rounded-md text-sm text-center"
           name=""
           id=""
           value={filter}
@@ -82,7 +82,7 @@ function Navbar() {
           />
         </div>
         <button
-          className=" mr-14 text-2xl border px-3 border-dark-grey text-dark-grey border-opacity-30 rounded-md dark:border-white dark:text-white shadow-[3px_3px_0px_0px_#212121] dark:shadow-[3px_3px_0px_0px_#d6d3d1] hover:shadow-[0px_0px_0px_0px_#212121] dark:hover:shadow-[0px_0px_0px_0px_white] transition-shadow"
+          className="py-[0.125rem] mr-14 text-2xl border px-3 border-dark-grey text-dark-grey border-opacity-30 rounded-md dark:border-white dark:text-white shadow-[3px_3px_0px_0px_#212121] dark:shadow-[3px_3px_0px_0px_#d6d3d1] hover:shadow-[0px_0px_0px_0px_#212121] dark:hover:shadow-[0px_0px_0px_0px_white] transition-shadow"
           onClick={handleThemeSwitch}
         >
           {theme === "dark" ? "☼" : "☾"}

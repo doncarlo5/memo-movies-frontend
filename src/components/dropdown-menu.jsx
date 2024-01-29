@@ -25,7 +25,7 @@ const DropdownMenu = () => {
     <div className="relative inline-block">
       <button
         onClick={toggleDropdown}
-        className="outline-none focus:outline-none border px-6 py-2 shadow-[5px_5px_0px_0px_#212121] dark:shadow-[5px_5px_0px_0px_#d6d3d1] dark:hover:shadow-[0px_0px_0px_0px_#FFFFFF] hover:shadow-[0px_0px_0px_0px_#212121]  transition-shadow hover:bg-[#0F1420] hover:text-[#FFFFFF] font-medium rounded-lg text-sm text-center inline-flex items-center"
+        className="outline-none focus:outline-none border px-6 py-2 shadow-[3px_3px_0px_0px_#212121] dark:shadow-[5px_5px_0px_0px_#d6d3d1] dark:hover:shadow-[0px_0px_0px_0px_#FFFFFF] hover:shadow-[0px_0px_0px_0px_#212121]  transition-shadow hover:bg-[#0F1420] hover:text-[#FFFFFF] font-medium rounded-lg text-sm text-center inline-flex items-center"
       >
         {formattedGenre ?? "Genre"}
         <svg
