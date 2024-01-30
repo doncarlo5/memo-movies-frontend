@@ -27,8 +27,8 @@ function Navbar() {
   }
 
   return (
-    <nav className=" bg-parchment dark:bg-[#0F1420] dark:text-white max-w-full shadow">
-      <div className=" max-w-* flex flex-wrap items-center justify-between mx-auto p-4">
+    <nav className=" bg-parchment max-w-full shadow dark:bg-[#0F1420] dark:text-white">
+      <div className=" max-w-* mx-auto flex flex-wrap items-center justify-between p-4">
         <Link to="/" onClick={() => setFilter("-1")}>
           <div className=" ">
             <svg
@@ -37,7 +37,7 @@ function Navbar() {
               viewBox="0 0 24 24"
               strokeWidth="1.5"
               stroke={theme === "dark" ? "#FFF" : "#212121"}
-              className="w-10 h-10 hover:scale-110 transition-transform mx-4"
+              className="mx-4 h-10 w-10 transition-transform hover:scale-110"
             >
               <path
                 strokeLinecap="round"
@@ -50,7 +50,7 @@ function Navbar() {
         <DropdownMenu />
 
         <select
-          className="px-1 py-[0.5159rem] font-medium hover:text-white outline-none focus:outline-none border shadow-[3px_3px_0px_0px_#212121] dark:shadow-[3px_3px_0px_0px_#d6d3d1] hover:shadow-[0px_0px_0px_0px_#212121] dark:hover:shadow-[0px_0px_0px_0px_white] transition-shadow hover:bg-dark-grey dark:bg-[#0F1420] rounded-md text-sm text-center"
+          className="rounded-md border px-1 py-[0.5159rem] text-center text-sm font-medium shadow-[3px_3px_0px_0px_#212121] outline-none transition-shadow hover:bg-dark-grey hover:text-white hover:shadow-[0px_0px_0px_0px_#212121] focus:outline-none dark:bg-[#0F1420] dark:shadow-[3px_3px_0px_0px_#d6d3d1] dark:hover:shadow-[0px_0px_0px_0px_white]"
           name=""
           id=""
           value={filter}
@@ -76,13 +76,13 @@ function Navbar() {
         <div className="bg-gray-200 dark:bg-dark-grey">
           <input
             type="text"
-            className="border opacity-30 border-dark-grey dark:border-white h-12 w-80 pr-8 pl-5 rounded z-0 focus:shadow focus:outline-none focus:opacity-90 dark:text-dark-grey"
+            className="z-0 h-12 w-80 rounded border border-dark-grey pl-5 pr-8 opacity-30 focus:opacity-90 focus:shadow focus:outline-none dark:border-white dark:text-dark-grey"
             placeholder="Name of the movie..."
             onKeyDown={(e) => handleKeyDown(e)}
           />
         </div>
         <button
-          className="py-[0.125rem] mr-14 text-2xl border px-3 border-dark-grey text-dark-grey border-opacity-30 rounded-md dark:border-white dark:text-white shadow-[3px_3px_0px_0px_#212121] dark:shadow-[3px_3px_0px_0px_#d6d3d1] hover:shadow-[0px_0px_0px_0px_#212121] dark:hover:shadow-[0px_0px_0px_0px_white] transition-shadow"
+          className="mr-14 rounded-md border border-dark-grey border-opacity-30 px-3 py-[0.125rem] text-2xl text-dark-grey shadow-[3px_3px_0px_0px_#212121] transition-shadow hover:shadow-[0px_0px_0px_0px_#212121] dark:border-white dark:text-white dark:shadow-[3px_3px_0px_0px_#d6d3d1] dark:hover:shadow-[0px_0px_0px_0px_white]"
           onClick={handleThemeSwitch}
         >
           {theme === "dark" ? "☼" : "☾"}
