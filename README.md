@@ -28,7 +28,7 @@ React application to search, discover and comment movies.
 - Mock Server on Vercel : [GitHub Repo](https://github.com/kitloong/json-server-vercel)
 
 <!--
-OK - Navbar button : doit être la même hauteur (pareil pour search)  - même font pour OK - toute la navbar - plus du tout de hover sur les boutons
+OK - Navbar button : doit être la même hauteur (pareil pour search) - même font pour OK - toute la navbar - plus du tout de hover sur les boutons
 OK - Navbar : border radius doit être le même sur dark button et search bar
 Dark mode : garder la même taille de bouton
 Search bar color : look like disable with placeholder. mettre le gris plus clair ou le placeholder en noir sans bordure

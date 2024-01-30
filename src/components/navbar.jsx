@@ -1,28 +1,28 @@
-import React, { useEffect, useState } from "react";
-import { Link, useSearchParams } from "react-router-dom";
-import DropdownMenu from "./dropdown-menu";
+import React, { useEffect, useState } from "react"
+import { Link, useSearchParams } from "react-router-dom"
+import DropdownMenu from "./dropdown-menu"
 
 function Navbar() {
-  const [filter, setFilter] = useState("-1");
-  const [params, setSearchParams] = useSearchParams();
+  const [filter, setFilter] = useState("-1")
+  const [params, setSearchParams] = useSearchParams()
 
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState("light")
 
   useEffect(() => {
     if (theme === "dark") {
-      document.documentElement.classList.add("dark");
+      document.documentElement.classList.add("dark")
     } else {
-      document.documentElement.classList.remove("dark");
+      document.documentElement.classList.remove("dark")
     }
-  }, [theme]);
+  }, [theme])
 
   function handleThemeSwitch() {
-    setTheme(theme === "dark" ? "light" : "dark");
+    setTheme(theme === "dark" ? "light" : "dark")
   }
 
   function handleKeyDown(e) {
     if (e.key === "Enter") {
-      setSearchParams({ searchBy: e.target.value });
+      setSearchParams({ searchBy: e.target.value })
     }
   }
 
@@ -55,8 +55,8 @@ function Navbar() {
           id=""
           value={filter}
           onChange={(e) => {
-            setFilter(e.target.value);
-            setSearchParams({ sortBy: e.target.value });
+            setFilter(e.target.value)
+            setSearchParams({ sortBy: e.target.value })
           }}
         >
           <option value="-1" disabled>
@@ -73,10 +73,10 @@ function Navbar() {
           <option value="revenue.desc">High revenue</option>
           <option value="revenue.asc">Low revenue</option>
         </select>
-        <div className="bg-gray-200 dark:bg-dark-grey">
+        <div className="rounded-md bg-gray-200 dark:bg-dark-grey">
           <input
             type="text"
-            className="z-0 h-12 w-80 rounded border border-dark-grey pl-5 pr-8 opacity-30 focus:opacity-90 focus:shadow focus:outline-none dark:border-white dark:text-dark-grey"
+            className="z-0 h-12 w-80 rounded-md  border border-dark-grey pl-5 pr-8 opacity-30 focus:rounded-md focus:opacity-90 focus:shadow focus:outline-none dark:border-white dark:text-dark-grey"
             placeholder="Name of the movie..."
             onKeyDown={(e) => handleKeyDown(e)}
           />
@@ -89,7 +89,7 @@ function Navbar() {
         </button>
       </div>
     </nav>
-  );
+  )
 }
 
-export default Navbar;
+export default Navbar
