@@ -31,10 +31,11 @@ React application to search, discover and comment movies.
 OK - Navbar button : doit être la même hauteur (pareil pour search) - même font pour OK - toute la navbar -
 OK - Navbar : border radius doit être le même sur dark button et search bar
 plus du tout de hover sur les boutons
-Search bar color : look like disable with placeholder. mettre le gris plus clair ou le placeholder en noir sans bordure
+OK - Search bar color : look like disable with placeholder. mettre le gris plus clair ou le placeholder en noir sans bordure
+Faire des cartes blanche avec fond gris. Au clique faire de la profondeur.
 Movie card effect inverse. Soit en hover, soit au clique: ça s'enfonce (shadow en bas, margin qui s'ajoute en active
 Allmovie card background : il doit être gris en fon, et blanc sur la carte.
-Taille fixe pour le dropdown menu (width en px)
+OK -Taille fixe pour le dropdown menu (width en px)
 Avoir une vraie pagination (en haut le nombre de résultats, en bas le nombre de pages ex:1/6)
 Moviecard : Afficher une image sans logo lorsque undefined. On error event image react
 Skeleton loading : array from length lors de la pagination

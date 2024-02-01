@@ -1,5 +1,6 @@
-import React from "react";
-import "./loading.css";
+import React from "react"
+
+import "./loading.css"
 
 function Loading() {
   return (
@@ -9,7 +10,7 @@ function Loading() {
       <div className="tetromino box3"></div>
       <div className="tetromino box4"></div>
     </div>
-  );
+  )
 }
 
-export default Loading;
+export default Loading

@@ -135,4 +135,4 @@ export const languageCountryMap = {
   el_GR: "GR",
   pt_PT: "PT",
   pl_PL: "PL",
-};
+}

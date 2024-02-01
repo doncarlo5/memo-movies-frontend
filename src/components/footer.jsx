@@ -1,14 +1,14 @@
-import React from "react";
+import React from "react"
 
 function Footer() {
   return (
-    <div className="  w-full bg-inherit text-inherit m-0 flex justify-center p-1 bg-[#EDEEF1] mt-auto">
-      <p className=" text-md font-extralight mr-1">Link to </p>
+    <div className="  m-0 mt-auto flex w-full justify-center bg-[#EDEEF1] bg-inherit p-1 text-inherit">
+      <p className=" text-md mr-1 font-extralight">Link to </p>
       <a href="https://github.com/doncarlo5/memoMovies-frontend">
         <svg
           viewBox="0 0 24 24"
           aria-hidden="true"
-          className="h-6 w-6 fill-slate-900 hover:scale-105 transition-transform"
+          className="h-6 w-6 fill-slate-900 transition-transform hover:scale-105"
         >
           <path
             fillRule="evenodd"
@@ -18,7 +18,7 @@ function Footer() {
         </svg>
       </a>
     </div>
-  );
+  )
 }
 
-export default Footer;
+export default Footer

@@ -77,7 +77,7 @@ function Navbar() {
         <div className="rounded-md bg-gray-200 dark:bg-dark-grey">
           <input
             type="text"
-            className="z-0 h-12 w-80 rounded-md border-none pl-5 pr-8 shadow placeholder:text-dark-grey focus:rounded-md focus:opacity-90 focus:outline-none dark:border-white dark:text-dark-grey"
+            className="z-0 h-12 w-80 rounded-md border-none pl-5 pr-8 shadow placeholder:text-dark-grey focus:rounded-md focus:outline-none dark:border-white dark:text-dark-grey"
             placeholder="Name of the movie..."
             onKeyDown={(e) => handleKeyDown(e)}
           />

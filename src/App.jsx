@@ -1,12 +1,14 @@
-import AllMoviesPage from "./pages/all-movies-page.jsx"
-import MovieDetailsPage from "./pages/movie-details-page.jsx"
 import Navbar from "./components/navbar.jsx"
+import AllMoviesPage from "./pages/all-movies-page.jsx"
 import ErrorPage from "./pages/error-page.jsx"
+import MovieDetailsPage from "./pages/movie-details-page.jsx"
 
 import "./App.css"
-import MoviesByGenre from "./pages/movies-by-genre.jsx"
+
+import { Route, Routes } from "react-router-dom"
+
 import Footer from "./components/footer.jsx"
-import { Routes, Route } from "react-router-dom"
+import MoviesByGenre from "./pages/movies-by-genre.jsx"
 
 function App() {
   return (

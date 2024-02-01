@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import axios from "axios";
-import Button from "../components/button";
-import { languageCountryMap } from "../constants/langue-code";
-import Pill from "../components/pill";
-import Loading from "../components/loading";
-import { oneMovieApi } from "../api/apiHandler";
+import React, { useEffect, useState } from "react"
+import axios from "axios"
+import { useNavigate, useParams } from "react-router-dom"
 
-const API_COMMENTS = "https://memo-movies-backend.vercel.app/comments?movieId=";
+import { oneMovieApi } from "../api/apiHandler"
+import Button from "../components/button"
+import Loading from "../components/loading"
+import Pill from "../components/pill"
+import { languageCountryMap } from "../constants/langue-code"
+
+const API_COMMENTS = "https://memo-movies-backend.vercel.app/comments?movieId="
 
 const svgDeleteButton = (
   <svg
@@ -16,93 +17,84 @@ const svgDeleteButton = (
     viewBox="0 0 24 24"
     strokeWidth={1.5}
     stroke="currentColor"
-    className="w-6 h-6"
+    className="h-6 w-6"
   >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      d="M15 12H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
-    />
+    <path strokeLinecap="round" strokeLinejoin="round" d="M15 12H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
   </svg>
-);
+)
 
 function getFlagUrl(lang) {
   if (languageCountryMap[lang]) {
-    return `http://purecatamphetamine.github.io/country-flag-icons/3x2/${languageCountryMap[lang]}.svg`;
+    return `http://purecatamphetamine.github.io/country-flag-icons/3x2/${languageCountryMap[lang]}.svg`
   } else {
-    return;
+    return
   }
 }
 
 function MovieDetailsPage() {
-  const { movieId } = useParams();
+  const { movieId } = useParams()
 
-  const [movie, setMovie] = useState(null);
-  const [comments, setComments] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [userComment, setUserComment] = useState("");
+  const [movie, setMovie] = useState(null)
+  const [comments, setComments] = useState(null)
+  const [isLoading, setIsLoading] = useState(true)
+  const [userComment, setUserComment] = useState("")
 
-  const navigate = useNavigate();
-  const imageBaseUrl = "https://image.tmdb.org/t/p/w500";
+  const navigate = useNavigate()
+  const imageBaseUrl = "https://image.tmdb.org/t/p/w500"
 
   async function fetchOneMovie() {
     try {
-      const response = await oneMovieApi.api.get(movieId);
-      const responseComment = await axios.get(`${API_COMMENTS}${movieId}`);
-      setComments(responseComment.data);
-      setMovie(response.data);
-      setIsLoading(false);
+      const response = await oneMovieApi.api.get(movieId)
+      const responseComment = await axios.get(`${API_COMMENTS}${movieId}`)
+      setComments(responseComment.data)
+      setMovie(response.data)
+      setIsLoading(false)
     } catch (error) {
-      console.error(error);
+      console.error(error)
     }
   }
 
   useEffect(() => {
-    fetchOneMovie();
-  }, []);
+    fetchOneMovie()
+  }, [])
 
   function handleKeyDown(e) {
     if (e.key === "Enter" && !e.shiftKey) {
-      e.preventDefault();
-      handleSubmit(e);
+      e.preventDefault()
+      handleSubmit(e)
     }
   }
 
   async function handleSubmit(e) {
-    e.preventDefault();
+    e.preventDefault()
     if (!userComment) {
-      return;
+      return
     }
     const newComment = {
       body: userComment,
       movieId,
-    };
-    try {
-      const responsePost = await axios.post(
-        "https://memo-movies-backend.vercel.app/comments",
-        newComment
-      );
-      fetchOneMovie();
-    } catch (error) {
-      console.error(error);
     }
-    setUserComment("");
-    fetchOneMovie();
+    try {
+      const responsePost = await axios.post("https://memo-movies-backend.vercel.app/comments", newComment)
+      fetchOneMovie()
+    } catch (error) {
+      console.error(error)
+    }
+    setUserComment("")
+    fetchOneMovie()
   }
 
   function formatDate(dateString) {
-    const options = { day: "numeric", month: "numeric", year: "numeric" };
-    return new Date(dateString).toLocaleDateString(undefined, options);
+    const options = { day: "numeric", month: "numeric", year: "numeric" }
+    return new Date(dateString).toLocaleDateString(undefined, options)
   }
 
   async function handleDelete(commentId) {
     try {
-      const response = await axios.delete(
-        `https://memo-movies-backend.vercel.app/comments/${commentId}`
-      );
-      fetchOneMovie();
+      const response = await axios.delete(`https://memo-movies-backend.vercel.app/comments/${commentId}`)
+      fetchOneMovie()
     } catch (error) {
-      console.error(error);
+      console.error(error)
     }
   }
 
@@ -112,15 +104,15 @@ function MovieDetailsPage() {
         <Loading></Loading>
       ) : (
         <div>
-          <div className=" flex p-5 items-center justify-center gap-10 dark:bg-dark-color-mode dark:text-white">
+          <div className=" flex items-center justify-center gap-10 p-5 dark:bg-dark-color-mode dark:text-white">
             <img
-              className=" rounded-md h-auto max-w-full "
+              className=" h-auto max-w-full rounded-md "
               src={`${imageBaseUrl}${movie.poster_path}`}
               alt={movie.title}
             />
             <div className=" flex flex-col">
-              <h3 className=" text-4xl font-black mb-1">{movie.title}</h3>
-              <p className=" font-light mb-2"> {movie.tagline}</p>
+              <h3 className=" mb-1 text-4xl font-black">{movie.title}</h3>
+              <p className=" mb-2 font-light"> {movie.tagline}</p>
               <div className=" mb-6">
                 <img
                   className=" w-8 rounded-sm"
@@ -130,20 +122,15 @@ function MovieDetailsPage() {
               </div>
               <div className=" flex">
                 <p className=" mb-3 mr-1">Vote average :</p>
-                <p className=" font-light mr-1">
-                  {movie.vote_average.toFixed(1)}
-                </p>
+                <p className=" mr-1 font-light">{movie.vote_average.toFixed(1)}</p>
                 <p className=" font-light"> / 10</p>
               </div>
               <div className=" flex">
                 <p className=" mb-3 mr-1">Release date :</p>
                 <p className=" font-light">{formatDate(movie.release_date)}</p>
               </div>
-              <p className="">Storyline :</p>{" "}
-              <p className=" font-light max-w-lg mb-6 text-sm">
-                {movie.overview}
-              </p>
-              <div className=" mb-6 flex flex-wrap gap-2 max-w-xl">
+              <p className="">Storyline :</p> <p className=" mb-6 max-w-lg text-sm font-light">{movie.overview}</p>
+              <div className=" mb-6 flex max-w-xl flex-wrap gap-2">
                 {" "}
                 <p>Product Companies :</p>
                 {movie.production_companies.map((productCompanies, index) => (
@@ -153,7 +140,7 @@ function MovieDetailsPage() {
                   </span>
                 ))}
               </div>
-              <div className=" flex flex-wrap gap-2 mb-6">
+              <div className=" mb-6 flex flex-wrap gap-2">
                 {movie.genres.map((genre) => (
                   <Pill id={genre.id} key={genre.id}>
                     {genre.name}
@@ -162,24 +149,24 @@ function MovieDetailsPage() {
               </div>
               <hr className=" flex w-10 text-grey-pill" />
               <div>
-                <p className=" italic font-bold mt-2 mb-2">My comments :</p>
+                <p className=" mb-2 mt-2 font-bold italic">My comments :</p>
                 {comments.map((comment) => {
                   return (
-                    <div key={comment.id} className="group flex ml-3">
+                    <div key={comment.id} className="group ml-3 flex">
                       <p>{comment.body}</p>
                       <button
                         onClick={() => handleDelete(comment.id)}
-                        className="ml-3 transition delay-500 ease-in-out opacity-0 group-hover:opacity-100 hover:text-red-800 hover:scale-100 scale-90"
+                        className="ml-3 scale-90 opacity-0 transition delay-500 ease-in-out hover:scale-100 hover:text-red-800 group-hover:opacity-100"
                       >
                         {svgDeleteButton}
                       </button>
                     </div>
-                  );
+                  )
                 })}
               </div>
               <div className=" mt-4">
                 <form onSubmit={handleSubmit}>
-                  <div className="w-full border border-dark-grey rounded-lg">
+                  <div className="w-full rounded-lg border border-dark-grey">
                     <label htmlFor="comment"></label>
                     <textarea
                       id="comment"
@@ -191,7 +178,7 @@ function MovieDetailsPage() {
                     ></textarea>
                   </div>
                   <button
-                    className="dark:border-white font-light border-2 border-dark-grey px-2 ml-1 mt-2  rounded-md shadow-[2px_2px_0px_0px_#212121] dark:shadow-[2px_2px_0px_0px_#D5D3D1]   dark:hover:shadow-[0px_0px_0px_0px_white] hover:shadow-[0px_0px_0px_0px_#212121] transition-shadow hover:bg-dark-grey hover:text-[#FFFFFF] dark:bg-[#0F1420] "
+                    className="ml-1 mt-2 rounded-md border-2 border-dark-grey px-2 font-light  shadow-[2px_2px_0px_0px_#212121] transition-shadow hover:bg-dark-grey   hover:text-[#FFFFFF] hover:shadow-[0px_0px_0px_0px_#212121] dark:border-white dark:bg-[#0F1420] dark:shadow-[2px_2px_0px_0px_#D5D3D1] dark:hover:shadow-[0px_0px_0px_0px_white] "
                     type="submit"
                   >
                     Add comment
@@ -204,7 +191,7 @@ function MovieDetailsPage() {
             <Button
               className=" "
               onClick={() => {
-                navigate(-1);
+                navigate(-1)
               }}
             >
               ⬅︎ Back
@@ -213,7 +200,7 @@ function MovieDetailsPage() {
         </div>
       )}
     </div>
-  );
+  )
 }
 
-export default MovieDetailsPage;
+export default MovieDetailsPage
