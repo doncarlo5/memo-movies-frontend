@@ -28,15 +28,14 @@ function getGenreById(id) {
 
 function MovieCard({ movie }) {
   return (
-    <div className="border-2 border-dark-grey bg-white p-4 transition-shadow hover:shadow-[0px_0px_0px_0px_#212121] active:shadow-2xl dark:border-white dark:bg-dark-color-mode dark:text-white dark:shadow-[5px_5px_0px_0px_#d6d3d1] dark:hover:bg-[#0F1420] dark:hover:shadow-[0px_0px_0px_0px_#07101C] ">
-      <div>
+    <div className="group border-dark-grey bg-black  dark:border-white dark:bg-dark-color-mode dark:text-white">
+      <div className="h-full transform-gpu border-2 border-dark-grey bg-white p-4 transition-transform group-hover:translate-x-[-6px] group-hover:translate-y-[-6px]">
         <Link to={`/movie/${movie.id}`}>
           <div>
             <div className=" relative">
               <div className=" overflow-hidden rounded-md bg-cover">
                 <img
                   style={{ borderImage: "fill 0" }}
-                  className=" transition-transform hover:scale-105"
                   src={`${imageBaseUrl}${movie.poster_path}`}
                   alt={"poster of" + movie.title}
                 />

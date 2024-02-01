@@ -60,7 +60,7 @@ function AllMoviesPage() {
 
   return (
     <div className=" dark:bg-dark-color-mode">
-      <div className="grid grid-cols-2 gap-1 bg-gray-50 p-4 dark:bg-dark-color-mode md:grid-cols-4 xl:grid-cols-6">
+      <div className="grid grid-cols-2 gap-3 bg-gray-50 p-4 dark:bg-dark-color-mode md:grid-cols-4 xl:grid-cols-6">
         {isLoading ? <Loading /> : movies.map((movie) => <MovieCard movie={movie} key={movie.id} />)}
       </div>
       <div className="mt-2 flex justify-center">
