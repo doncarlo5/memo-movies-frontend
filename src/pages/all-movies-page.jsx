@@ -55,13 +55,19 @@ function AllMoviesPage() {
   }
 
   useEffect(() => {
-    // fetchAllMovies(currentPage)
+    fetchAllMovies(currentPage)
   }, [currentPage, sortBy, searchBy])
 
   return (
     <div className=" dark:bg-dark-color-mode">
       <div className="grid grid-cols-2 gap-3 bg-gray-50 p-4 dark:bg-dark-color-mode md:grid-cols-4 xl:grid-cols-6">
-        {isLoading ? <Loading /> : movies.map((movie) => <MovieCard movie={movie} key={movie.id} />)}
+        {isLoading ? (
+          <div className="col-span-full flex items-center justify-center">
+            <Loading />
+          </div>
+        ) : (
+          movies.map((movie) => <MovieCard movie={movie} key={movie.id} />)
+        )}
       </div>
       <div className="mt-2 flex justify-center">
         {currentPage > 1 && (
