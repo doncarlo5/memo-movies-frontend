@@ -14,15 +14,18 @@ function App() {
   return (
     <div className="text-foreground  dark:bg-dark-color-mode">
       <Navbar />
-      <div className="pb-6 dark:bg-dark-color-mode">
+
+      <main className="pb-6 dark:bg-dark-color-mode">
         <Routes>
           <Route path="/" element={<AllMoviesPage />} />
           <Route path="/:genre" element={<MoviesByGenre />} />
           <Route path="/movie/:movieId" element={<MovieDetailsPage />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
-      </div>
-      <Footer />
+      </main>
+      <footer className="">
+        <Footer className="" />
+      </footer>
     </div>
   )
 }

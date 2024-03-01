@@ -55,7 +55,7 @@ function AllMoviesPage() {
   }
 
   useEffect(() => {
-    fetchAllMovies(currentPage)
+    // fetchAllMovies(currentPage)
   }, [currentPage, sortBy, searchBy])
 
   return (

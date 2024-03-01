@@ -2,7 +2,7 @@ import React from "react"
 
 function Footer() {
   return (
-    <div className="  m-0 mt-auto flex w-full justify-center bg-[#EDEEF1] bg-inherit p-1 text-inherit">
+    <div className=" flex w-full justify-center bg-[#EDEEF1] bg-inherit p-1 text-inherit">
       <p className=" text-md mr-1 font-extralight">Link to </p>
       <a href="https://github.com/doncarlo5/memoMovies-frontend">
         <svg

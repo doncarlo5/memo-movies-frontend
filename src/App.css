@@ -53,3 +53,7 @@ p {
   background-color: #212121;
   outline: 1px solid slategrey;
 }
+
+main {
+  min-height: calc(100vh - 112px);
+}
