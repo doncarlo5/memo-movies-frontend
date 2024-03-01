@@ -16,7 +16,7 @@ React application to search, discover and comment movies.
 
 # ⚙️ Behind the scene
 
-✨ **Tailwind project** <br />
+🎨 **Tailwind project** <br />
 🛜 **Manage external API** <br />
 📂 **Handle mock server** <br />
 
