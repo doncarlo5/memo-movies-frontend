@@ -85,7 +85,7 @@ function AllMoviesPage() {
       </div>
       {totalPages && (
         <div className="flex justify-center p-5 font-extralight opacity-80 dark:text-white-grey">
-          <p>{`Page ${currentPage} of ${totalPages}`}</p>
+          <p>{`Page ${currentPage}/${totalPages}`}</p>
         </div>
       )}
       <div className="mt-2 flex justify-center">
@@ -94,9 +94,11 @@ function AllMoviesPage() {
             {"<"}
           </Button>
         )}
-        <Button onClick={handleNextPage} className="flex justify-center font-extrabold">
-          {">"}
-        </Button>
+        {!isLoading && (
+          <Button onClick={handleNextPage} className="flex justify-center font-extrabold">
+            {">"}
+          </Button>
+        )}
       </div>
     </div>
   )
