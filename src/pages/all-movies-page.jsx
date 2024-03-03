@@ -10,6 +10,7 @@ function AllMoviesPage() {
   const [movies, setMovies] = useState([])
   const [isLoading, setIsLoading] = useState(true)
   const [currentPage, setCurrentPage] = useState(1)
+  const [totalPages, setTotalPages] = useState(null)
 
   const [params, setSearchParams] = useSearchParams()
   const sortBy = params.get("sortBy")
@@ -48,7 +49,9 @@ function AllMoviesPage() {
     try {
       const response = await apiToUse.api.get(URL_PARAMS)
       setMovies(response.data.results)
+      setTotalPages(response.data.total_pages)
       setIsLoading(false)
+      console.log("response 🔽", response.data)
     } catch (error) {
       console.error(error)
     }
@@ -68,6 +71,9 @@ function AllMoviesPage() {
         ) : (
           movies.map((movie) => <MovieCard movie={movie} key={movie.id} />)
         )}
+      </div>
+      <div className="flex justify-center p-5 font-extralight opacity-80 dark:text-white-grey">
+        <p>{`Page ${currentPage} of ${totalPages}`}</p>
       </div>
       <div className="mt-2 flex justify-center">
         {currentPage > 1 && (
