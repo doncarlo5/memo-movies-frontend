@@ -98,6 +98,13 @@ function MovieDetailsPage() {
     }
   }
 
+  function coverImage(movie) {
+    if (movie.poster_path) {
+      return `${imageBaseUrl}${movie.poster_path}`
+    }
+    return "https://i.imgur.com/E5Z9K6S.png"
+  }
+
   return (
     <div className="">
       {isLoading ? (
@@ -107,7 +114,8 @@ function MovieDetailsPage() {
           <div className=" flex items-center justify-center gap-10 p-5 dark:bg-dark-color-mode dark:text-white">
             <img
               className=" h-auto max-w-full rounded-md "
-              src={`${imageBaseUrl}${movie.poster_path}`}
+              src={coverImage(movie)}
+              // src={`${imageBaseUrl}${movie.poster_path}`}
               alt={movie.title}
             />
             <div className=" flex flex-col">

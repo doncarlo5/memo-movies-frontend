@@ -26,6 +26,13 @@ function getGenreById(id) {
   return null
 }
 
+function coverImage(movie) {
+  if (movie.poster_path) {
+    return `${imageBaseUrl}${movie.poster_path}`
+  }
+  return "https://i.imgur.com/E5Z9K6S.png"
+}
+
 function MovieCard({ movie }) {
   return (
     <div className="group border-dark-grey bg-black  dark:border-white dark:bg-dark-color-mode dark:text-white">
@@ -36,7 +43,10 @@ function MovieCard({ movie }) {
               <div className=" overflow-hidden rounded-md bg-cover">
                 <img
                   style={{ borderImage: "fill 0" }}
-                  src={`${imageBaseUrl}${movie.poster_path}`}
+                  src={coverImage(movie)}
+                  // src={`https://i.imgur.com/.png`}
+                  // src={`${imageBaseUrl}${movie.poster_path}`}
+
                   alt={"poster of" + movie.title}
                 />
               </div>
