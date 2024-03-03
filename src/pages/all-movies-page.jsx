@@ -11,6 +11,7 @@ function AllMoviesPage() {
   const [isLoading, setIsLoading] = useState(true)
   const [currentPage, setCurrentPage] = useState(1)
   const [totalPages, setTotalPages] = useState(null)
+  const [results, setResults] = useState(null)
 
   const [params, setSearchParams] = useSearchParams()
   const sortBy = params.get("sortBy")
@@ -50,6 +51,7 @@ function AllMoviesPage() {
       const response = await apiToUse.api.get(URL_PARAMS)
       setMovies(response.data.results)
       setTotalPages(response.data.total_pages)
+      setResults(response.data.total_results)
       setIsLoading(false)
       console.log("response 🔽", response.data)
     } catch (error) {
@@ -61,8 +63,17 @@ function AllMoviesPage() {
     fetchAllMovies(currentPage)
   }, [currentPage, sortBy, searchBy])
 
+  function numberWithSpaces(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")
+  }
+
   return (
     <div className=" dark:bg-dark-color-mode">
+      {results && (
+        <div className="flex justify-center p-3 text-sm font-extralight opacity-80 dark:text-white-grey">
+          <p>{`${numberWithSpaces(results)} results`}</p>
+        </div>
+      )}
       <div className="grid grid-cols-2 gap-3 bg-gray-50 p-4 dark:bg-dark-color-mode md:grid-cols-4 xl:grid-cols-6">
         {isLoading ? (
           <div className="col-span-full flex items-center justify-center">
@@ -72,9 +83,11 @@ function AllMoviesPage() {
           movies.map((movie) => <MovieCard movie={movie} key={movie.id} />)
         )}
       </div>
-      <div className="flex justify-center p-5 font-extralight opacity-80 dark:text-white-grey">
-        <p>{`Page ${currentPage} of ${totalPages}`}</p>
-      </div>
+      {totalPages && (
+        <div className="flex justify-center p-5 font-extralight opacity-80 dark:text-white-grey">
+          <p>{`Page ${currentPage} of ${totalPages}`}</p>
+        </div>
+      )}
       <div className="mt-2 flex justify-center">
         {currentPage > 1 && (
           <Button onClick={handlePreviousPage} className="mr-6 flex justify-center font-extrabold">
