@@ -33,8 +33,8 @@ OK - Navbar : border radius doit être le même sur dark button et search bar
 plus du tout de hover sur les boutons
 OK - Search bar color : look like disable with placeholder. mettre le gris plus clair ou le placeholder en noir sans bordure
 OK -Taille fixe pour le dropdown menu (width en px)
-Avoir une vraie pagination (en haut le nombre de résultats, en bas le nombre de pages ex:1/6)
-Moviecard : Afficher une image sans logo lorsque undefined. On error event image react
+OK - Avoir une vraie pagination (en haut le nombre de résultats, en bas le nombre de pages ex:1/6)
+OK -Moviecard : Afficher une image sans logo lorsque undefined. On error event image react
 Skeleton loading : array from length lors de la pagination
 Lors du loading, mettre le footer en bas
 Gestion erreur : renvoi vers la 404 lors d'un film qui n'existe pas
