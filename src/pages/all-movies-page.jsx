@@ -71,7 +71,7 @@ function AllMoviesPage() {
     <div className=" dark:bg-dark-color-mode">
       {results && (
         <div className="flex justify-center p-3 text-sm font-extralight opacity-80 dark:text-white-grey">
-          <p>{`${numberWithSpaces(results)} results`}</p>
+          <p>{`${numberWithSpaces(results)} movies founded`}</p>
         </div>
       )}
       <div className="grid grid-cols-2 gap-3 bg-gray-50 p-4 dark:bg-dark-color-mode md:grid-cols-4 xl:grid-cols-6">
